@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -40,7 +39,6 @@ void exercicio03(){
 	printf("Digite qual o valor final: \n");
 	scanf("%d", &final);
 	
-	srand(3);
 	
 	for(i =0; i < 10; i++){
 		array[i] = rand()%((final - inicio) + 1) + inicio; 
@@ -60,7 +58,7 @@ void exercicio04(){
 	int array[30], i, final = 100, inicio = 0;
 	int *ponteiro;
 	
-	void srand(3);
+	
 	
 	for(i=0; i<30; i++){
 		array[i] = rand()%100;
@@ -73,6 +71,7 @@ void exercicio04(){
 }
 
 int main(int argc, char *argv[]) {
+	srand(NULL);
 	printf("Exercicio 01 \n");
 	exercicio01();
 	printf("Exercicio 02 \n");
