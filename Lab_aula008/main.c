@@ -153,41 +153,50 @@ void exercicio04(){
     }
 
     printf("\n\n");
+    for(i =0; i < entrada; i++){
+        if(vetor[i]%2 == 0){
+            numeroDePares++;
+        }else{
+            numeroDeImpares++;
+        }
+    }
+    pares = (int *)malloc((numeroDePares+1) * sizeof(int));
+    impares = (int *)malloc((numeroDeImpares+1)* sizeof(int));
+    numeroDeImpares = 0;
+    numeroDePares = 0;
 
-     for(i = 0; i < entrada; i++){
+    for(i = 0; i < entrada; i++){
         if(vetor[i]%2 == 0){
             pares[numeroDePares] = vetor[i];
             numeroDePares++;
-            pares = (int *)malloc(numeroDePares * sizeof(int));
         }else{
             impares[numeroDeImpares] = vetor[i];
             numeroDeImpares++;
-            impares = (int *)malloc(numeroDeImpares * sizeof(int));
         }
     }
 
     printf("Vetor dos numeros impares\n");
     for(i = 0; i < numeroDeImpares; i++){
-        printf("%d - %d\n", i+1, impares[i]);
+        printf("%d - %d \n", i+1, impares[i]);
     }
 
     printf("\n\n");
 
     printf("Vetor dos numeros pares\n");
     for(i = 0; i < numeroDePares; i++){
-        printf("%d - %d\n", i+1, pares[i]);
+        printf("%d - %d \n", i+1, pares[i]);
     }
 
     free(vetor);
     free(impares);
     free(pares);
-    free(aux);
 }
 
 int main(int argc, char** argv) {
-	//exercicio01();
-	//exercicio02();
-	//exercicio03();
+	exercicio01();
+	exercicio02();
+	exercicio03();
 	exercicio04();
 	return 0;
 }
+
