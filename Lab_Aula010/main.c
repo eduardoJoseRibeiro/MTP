@@ -71,3 +71,40 @@ void exercicio01(){
     fclose(arquivo2);
     fclose(arquivo3);
 }
+
+void exercicio02(){
+    char frase[200], arquivo[] = "C:\\Users\\1E13\\Desktop\\doc.txt";
+    int bandeira = 1;
+
+    printf("Passei por aqui\n");
+    FILE *arquivo2 = fopen(arquivo, "w");
+    printf("Passei aqui tambem\n");
+
+    if(arquivo2){
+        printf("\nArquivo aberto com sucesso!\n");
+
+        rewind(arquivo2);
+        printf("Digite qualquer coisa, mas nao esqueca de colocar fim no final\n");
+        do{
+            fflush(stdin);
+            gets(frase);
+
+            fprintf(arquivo2, "%s\n", frase);
+
+            if(frase[0] == 'f' || frase[0] == 'F'){
+                if(frase[1] == 'i' || frase[1] == 'I'){
+                    if(frase[2] == 'm' || frase[2] == 'M'){
+                        bandeira = 0;
+                    }else continue;
+                }else continue;
+            }else continue;
+
+            strcpy(frase, "");
+
+        }while(bandeira);
+    }else{
+        printf("\nO arquivo nao pode ser aberto!\n");
+    }
+
+    fclose(arquivo2);
+}
