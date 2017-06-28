@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 void exercicio01(){
     char primeiroArquivo[50] = "C:\\Users\\1E13\\Desktop\\",
@@ -14,12 +17,14 @@ void exercicio01(){
     gets(aux);
 
     strcat(primeiroArquivo, aux);
+    strcat(primeiroArquivo, ".txt");
 
     printf("Digite o nome do segundo Arquivo\n");
     fflush(stdin);
     gets(aux);
 
     strcat(segundoArquivo, aux);
+    strcat(segundoArquivo, ".txt");
 
     FILE *arquivo1 = fopen(primeiroArquivo, "w+");
     FILE *arquivo2 = fopen(segundoArquivo, "w+");
@@ -70,15 +75,16 @@ void exercicio01(){
     fclose(arquivo1);
     fclose(arquivo2);
     fclose(arquivo3);
+    system("pause");
 }
 
 void exercicio02(){
+    system("cls");
+
     char frase[200], arquivo[] = "C:\\Users\\1E13\\Desktop\\doc.txt";
     int bandeira = 1;
 
-    printf("Passei por aqui\n");
     FILE *arquivo2 = fopen(arquivo, "w");
-    printf("Passei aqui tambem\n");
 
     if(arquivo2){
         printf("\nArquivo aberto com sucesso!\n");
@@ -107,10 +113,12 @@ void exercicio02(){
     }
 
     fclose(arquivo2);
+    system("pause");
 }
 
-
 void exercicio03(){
+    system("cls");
+
     char arquivo[] = "C:\\Users\\1E13\\Desktop\\doc.txt", aux[200];
     int i = 0;
 
@@ -127,4 +135,67 @@ void exercicio03(){
     }
 
     fclose(doc);
+    system("pause");
+}
+
+int fatorial(int entrada){
+    if(entrada == 0)
+        return 1;
+    else if(entrada == 1)
+        return 1;
+    else
+        return (entrada*fatorial(entrada - 1));
+}
+
+void exercicio04(){
+    system("cls");
+
+    int i = 0, entrada, fator, bandeira = 1;
+    char arquivo[] = "C:\\Users\\1E13\\Desktop\\doc3.txt", aux[100];
+
+    FILE *arq = fopen(arquivo, "w+");
+
+    rewind(arq);
+    fprintf(arq, "=============================\n");
+    fprintf(arq, "==== Resultado Fatoriais ====\n");
+    fprintf(arq, "=============================\n");
+
+    do{
+        system("cls");
+        printf("Digite um valor n\n");
+        fflush(stdin);
+        scanf("%d",&entrada);
+
+        if(entrada==999){
+            bandeira = 0;
+        }else{
+            fator = fatorial(entrada);
+            printf("\nA fatorial do numero digitado eh %d\n", fator);
+            fprintf(arq, "Para %d = %d\n", entrada, fator);
+        }
+        system("pause");
+    }while(bandeira);
+
+    fprintf(arq, "=============================\n");
+    fclose(arq);
+
+    FILE *leitura = fopen(arquivo, "r");
+
+    system("cls");
+    while(!feof(leitura)){
+        fgets(aux, 100, leitura);
+        printf("%s", aux);
+    }
+
+    fclose(leitura);
+    system("pause");
+}
+
+int main()
+{
+    exercicio01();
+    exercicio02();
+    exercicio03();
+    exercicio04();
+    return 0;
 }
