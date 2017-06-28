@@ -108,3 +108,23 @@ void exercicio02(){
 
     fclose(arquivo2);
 }
+
+
+void exercicio03(){
+    char arquivo[] = "C:\\Users\\1E13\\Desktop\\doc.txt", aux[200];
+    int i = 0;
+
+    FILE *doc = fopen(arquivo, "r");
+
+    rewind(doc);
+    printf("Imprimindo o arquivo em maiusculo!\n");
+    while(!feof(doc)){
+        fgets(aux, 50, doc);
+        for(i=0; aux[i]!= NULL; i++){
+            aux[i] = toupper(aux[i]);
+        }
+        printf("%s", aux);
+    }
+
+    fclose(doc);
+}
